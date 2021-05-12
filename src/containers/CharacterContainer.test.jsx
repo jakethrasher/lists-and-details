@@ -1,13 +1,20 @@
-import React from 'react'
-import {findByRole, render, screen} from '@testing-library/react'
-import CharacterContainer from './CharacterContainer'
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import CharacterContainer from './CharacterContainer';
+import { MemoryRouter } from 'react-router-dom';
 
-describe('CharacterContainer', ()=>{
-    it('renders a list of characters from the hey arnold api', async ()=>{
-        render(<CharacterContainer/>)
+describe('CharacterContainer', () => {
+  it('renders a list of characters from the hey arnold api', async () => {
+    render(
+      <MemoryRouter>
+        <CharacterContainer/>
+      </MemoryRouter>
+    );
 
-        screen.getByText('Hey Arnold! Character List:');
+    screen.getByText('LOADING');
 
-        await screen.findByRole('list',{name:'characters'})
-    })
-})
+    const ul = await screen.findByRole('list', { name:'characters' });
+    expect(ul).toMatchSnapshot();
+        
+  });
+});
