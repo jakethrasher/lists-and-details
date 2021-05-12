@@ -1,0 +1,10 @@
+li{
+    text-align: center;
+    width: 30%;
+    list-style: none;
+}
+img{
+    object-fit: contain;
+    width: 250px;
+    height: 250px;
+}
